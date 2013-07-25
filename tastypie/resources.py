@@ -1758,7 +1758,9 @@ class ModelResource(Resource):
         result = default
         internal_type = f.get_internal_type()
 
-        if internal_type in ('DateField', 'DateTimeField'):
+        if internal_type in ('DateField',):
+            result = fields.DateField
+        elif internal_type in ('DateTimeField',):
             result = fields.DateTimeField
         elif internal_type in ('BooleanField', 'NullBooleanField'):
             result = fields.BooleanField
